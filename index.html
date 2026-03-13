@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Sultan Iskandar Muda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue-deep: #0a1f5c;
+            --blue-mid: #1a3fa8;
+            --blue-bright: #2563eb;
+            --blue-light: #60a5fa;
+            --gold: #f5c842;
+            --gold-dark: #d4a017;
+            --white: #ffffff;
+            --off-white: #f4f7ff;
+            --gray-soft: #e8edf8;
+            --text-dark: #0d1b3e;
+            --text-muted: #4a5a80;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+            box-shadow: 0 4px 30px rgba(10,31,92,0.4);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .brand-logo-placeholder {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+            max-width: 200px;
+        }
+
+        .brand-name span {
+            color: var(--gold);
+            display: block;
+            font-size: 11px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 6px;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--gold);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-bright) 100%);
+            padding: 90px 30px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(245,200,66,0.12) 0%, transparent 70%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(245,200,66,0.18);
+            border: 1px solid rgba(245,200,66,0.4);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 68px);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.75);
+            font-size: 17px;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.65);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* ── SECTION WRAPPER ── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 70px 30px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--blue-deep);
+            margin-bottom: 8px;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 44px;
+        }
+
+        .divider {
+            width: 56px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue-bright), var(--gold));
+            border-radius: 2px;
+            margin: 14px 0 44px;
+        }
+
+        /* ── TENTANG ── */
+        .tentang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .tentang-text p {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(10,31,92,0.1);
+        }
+
+        .info-table tr:first-child td:first-child { border-top-left-radius: 12px; }
+        .info-table tr:first-child td:last-child  { border-top-right-radius: 12px; }
+
+        .info-table tr {
+            transition: background 0.2s;
+        }
+
+        .info-table tr:nth-child(odd) {
+            background: var(--white);
+        }
+
+        .info-table tr:nth-child(even) {
+            background: var(--gray-soft);
+        }
+
+        .info-table tr:hover {
+            background: #dbeafe;
+        }
+
+        .info-table td {
+            padding: 13px 18px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(37,99,235,0.08);
+        }
+
+        .info-table td:first-child {
+            font-weight: 600;
+            color: var(--blue-deep);
+            width: 42%;
+        }
+
+        .info-table td:last-child {
+            color: var(--text-muted);
+        }
+
+        .school-img {
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 40px rgba(10,31,92,0.15);
+        }
+
+        .school-img-placeholder {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--blue-mid), var(--blue-bright));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        /* ── GALERI ── */
+        #galeri {
+            background: var(--white);
+            padding: 70px 0;
+        }
+
+        .galeri-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .galeri-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: var(--gray-soft);
+        }
+
+        .galeri-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .galeri-item:hover img { transform: scale(1.07); }
+
+        .galeri-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(10,31,92,0.5) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .galeri-item:hover::after { opacity: 1; }
+
+        /* ── VISI MISI ── */
+        .vismis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .card-vm {
+            background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+            border-radius: 20px;
+            padding: 36px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-vm::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(245,200,66,0.12);
+        }
+
+        .card-vm-icon {
+            font-size: 32px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .card-vm h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-transform: capitalize;
+        }
+
+        .card-vm p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.82);
+        }
+
+        /* ── JURUSAN ── */
+        #jurusan {
+            background: var(--off-white);
+        }
+
+        .jurusan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .card-jurusan {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            border: 1px solid rgba(37,99,235,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(10,31,92,0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-jurusan::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue-bright), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card-jurusan:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(10,31,92,0.14);
+            border-color: var(--blue-bright);
+        }
+
+        .card-jurusan:hover::before { transform: scaleX(1); }
+
+        .jurusan-abbr {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--blue-bright), var(--blue-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .card-jurusan h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--blue-deep);
+            margin-bottom: 8px;
+        }
+
+        .card-jurusan p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: linear-gradient(135deg, var(--blue-deep), #060e2e);
+            color: rgba(255,255,255,0.55);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 14px;
+        }
+
+        footer strong { color: var(--gold); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge, .hero h1, .hero p, .hero-stats {
+            animation: fadeUp 0.7s ease both;
+        }
+        .hero h1 { animation-delay: 0.1s; }
+        .hero p   { animation-delay: 0.2s; }
+        .hero-stats { animation-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            .tentang-grid, .vismis-grid { grid-template-columns: 1fr; }
+            .jurusan-grid { grid-template-columns: 1fr; }
+            .galeri-grid  { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats   { gap: 28px; flex-wrap: wrap; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <a href="#home" class="brand">
+            <img src="logouts.jpeg" class="brand-logo" alt="Logo SMK" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="brand-logo-placeholder" style="display:none">SIM</div>
+            <div class="brand-name">
+                SMK Sultan Iskandar Muda
+                <span>Medan, Sumatera Utara</span>
+            </div>
+        </a>
+        <nav>
+            <a href="#tentang">Tentang</a>
+            <a href="#galeri">Galeri</a>
+            <a href="#jurusan">Jurusan</a>
+            <a href="#visi">Visi & Misi</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-badge">Akreditasi A · Est. 1987</div>
+    <h1>SMK Sultan <em>Iskandar Muda</em></h1>
+    <p>Institusi pendidikan swasta terkemuka di Medan yang berkomitmen pada pendidikan multikultural, inklusivitas, dan mencetak generasi siap kerja.</p>
+    <div class="hero-stats">
+        <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Siswa Aktif</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Program Keahlian</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">37+</div>
+            <div class="stat-label">Tahun Berdiri</div>
+        </div>
+    </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+    <div class="section">
+        <p class="section-sub">Mengenal Kami</p>
+        <h2 class="section-title">Tentang Sekolah</h2>
+        <div class="divider"></div>
+        <div class="tentang-grid">
+            <div class="tentang-text">
+                <p>SMK Sultan Iskandar Muda adalah institusi pendidikan swasta terkemuka di Medan, Sumatera Utara, yang didirikan oleh Dr. Sofyan Tan pada 25 Agustus 1987.</p>
+                <p>YPSIM terkenal dengan komitmennya terhadap pendidikan multikultural, inklusivitas, keberagaman, dan program anak asuh. Sekolah ini menjadi rumah bagi ratusan siswa yang dibina untuk menjadi generasi unggul dan berkarakter.</p>
+                <table class="info-table">
+                    <tr><td>Nama Sekolah</td><td>SMK Sultan Iskandar Muda</td></tr>
+                    <tr><td>NPSN</td><td>10211075</td></tr>
+                    <tr><td>Alamat</td><td>Jln Sunggal Gg Bakul Pekan 1, Kec. Medan Sunggal</td></tr>
+                    <tr><td>Akreditasi</td><td>A</td></tr>
+                    <tr><td>Kepala Sekolah</td><td>Melda Susanti Sihite, S.Pd</td></tr>
+                    <tr><td>Jumlah Siswa/i</td><td>±500 siswa/i</td></tr>
+                    <tr><td>Status</td><td>Swasta</td></tr>
+                    <tr><td>Pendiri</td><td>Dr. Sofyan Tan, 25 Agustus 1987</td></tr>
+                </table>
+            </div>
+            <div>
+                <img src="scholll.jpg" class="school-img" alt="Gedung Sekolah" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="school-img-placeholder" style="display:none">📸 Foto Sekolah</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+    <div class="galeri-inner">
+        <p class="section-sub">Dokumentasi</p>
+        <h2 class="section-title">Galeri Sekolah</h2>
+        <div class="divider"></div>
+        <div class="galeri-grid">
+            <div class="galeri-item"><img src="1.jpeg" alt="Galeri 1" onerror="this.style.background='#dbeafe'"></div>
+            <div class="galeri-item"><img src="2.jpeg" alt="Galeri 2" onerror="this.style.background='#bfdbfe'"></div>
+            <div class="galeri-item"><img src="9.jpeg" alt="Galeri 3" onerror="this.style.background='#93c5fd'"></div>
+            <div class="galeri-item"><img src="4.jpeg" alt="Galeri 4" onerror="this.style.background='#60a5fa'"></div>
+            <div class="galeri-item"><img src="5.jpeg" alt="Galeri 5" onerror="this.style.background='#3b82f6'"></div>
+            <div class="galeri-item"><img src="6.jpeg" alt="Galeri 6" onerror="this.style.background='#2563eb'"></div>
+            <div class="galeri-item"><img src="7.jpeg" alt="Galeri 7" onerror="this.style.background='#1d4ed8'"></div>
+            <div class="galeri-item"><img src="8.jpeg" alt="Galeri 8" onerror="this.style.background='#1e40af'"></div>
+        </div>
+    </div>
+</section>
+
+<!-- VISI MISI -->
+<section id="visi">
+    <div class="section">
+        <p class="section-sub">Landasan Kami</p>
+        <h2 class="section-title">Visi & Misi</h2>
+        <div class="divider"></div>
+        <div class="vismis-grid">
+            <div class="card-vm">
+                <span class="card-vm-icon">🎯</span>
+                <h3>Visi</h3>
+                <p>Mewujudkan manusia yang beriman, berdaya karya, berbudaya, berbhineka, dan berkelanjutan. Sekolah ini bertujuan mencetak lulusan yang siap kerja, berkarakter, dan menguasai ilmu pengetahuan dan teknologi (IPTEK), terutama melalui metode Teaching Factory.</p>
+            </div>
+            <div class="card-vm">
+                <span class="card-vm-icon">🚀</span>
+                <h3>Misi</h3>
+                <p>Mewujudkan manusia beriman, berdaya karya, berbudaya, berbhineka, dan berkelanjutan. Sekolah menekankan pembelajaran berbasis teaching factory (praktik UMKM) yang sesuai kebutuhan industri, disiplin, bertanggung jawab, serta mengembangkan kewirausahaan untuk mencetak pengusaha muda siap kerja.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JURUSAN -->
+<section id="jurusan">
+    <div class="section">
+        <p class="section-sub">Program Keahlian</p>
+        <h2 class="section-title">Jurusan</h2>
+        <div class="divider"></div>
+        <div class="jurusan-grid">
+            <div class="card-jurusan">
+                <div class="jurusan-abbr">DKV</div>
+                <h3>Desain Komunikasi Visual</h3>
+                <p>Mengembangkan kreativitas dan kemampuan desain grafis, ilustrasi, dan komunikasi visual berbasis teknologi modern.</p>
+            </div>
+            <div class="card-jurusan">
+                <div class="jurusan-abbr">RPL</div>
+                <h3>Rekayasa Perangkat Lunak</h3>
+                <p>Membekali siswa dengan keahlian pemrograman, pengembangan aplikasi, dan solusi teknologi informasi masa depan.</p>
+            </div>
+            <div class="card-jurusan">
+                <div class="jurusan-abbr">AKL</div>
+                <h3>Akuntansi Keuangan Lembaga</h3>
+                <p>Mencetak tenaga ahli keuangan yang kompeten, berintegritas, dan siap berkarir di dunia industri dan perbankan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 <strong>SMK Sultan Iskandar Muda</strong> · Medan, Sumatera Utara · NPSN 10211075</p>
+    <p style="margin-top: 8px; font-size: 12px;">Didirikan oleh Dr. Sofyan Tan · 25 Agustus 1987</p>
+</footer>
+
+</body>
+</html>
